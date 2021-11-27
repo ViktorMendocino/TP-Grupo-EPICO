@@ -1,0 +1,6 @@
+C:\Users\User\Desktop\Storage\Digital Programing\.NET\Clases UTN x Neoris\Trabajo Integrador\Clientes\bin\Debug\Clientes.dll
+C:\Users\User\Desktop\Storage\Digital Programing\.NET\Clases UTN x Neoris\Trabajo Integrador\Clientes\bin\Debug\Clientes.pdb
+C:\Users\User\Desktop\Storage\Digital Programing\.NET\Clases UTN x Neoris\Trabajo Integrador\Clientes\obj\Debug\Clases de proyectos.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\Storage\Digital Programing\.NET\Clases UTN x Neoris\Trabajo Integrador\Clientes\obj\Debug\Clientes.dll
+C:\Users\User\Desktop\Storage\Digital Programing\.NET\Clases UTN x Neoris\Trabajo Integrador\Clientes\obj\Debug\Clientes.pdb
+C:\Users\User\Desktop\Storage\Digital Programing\.NET\Clases UTN x Neoris\Trabajo Integrador\Clientes\obj\Debug\Clases de proyectos.csproj.AssemblyReference.cache

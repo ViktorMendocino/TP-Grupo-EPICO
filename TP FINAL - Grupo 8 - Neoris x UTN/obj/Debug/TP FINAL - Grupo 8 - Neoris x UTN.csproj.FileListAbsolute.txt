@@ -1,0 +1,10 @@
+C:\Users\User\Desktop\Storage\Digital Programing\.NET\Clases UTN x Neoris\Trabajo Integrador\TP FINAL - Grupo 8 - Neoris x UTN\bin\Debug\TP FINAL - Grupo 8 - Neoris x UTN.exe.config
+C:\Users\User\Desktop\Storage\Digital Programing\.NET\Clases UTN x Neoris\Trabajo Integrador\TP FINAL - Grupo 8 - Neoris x UTN\bin\Debug\TP FINAL - Grupo 8 - Neoris x UTN.exe
+C:\Users\User\Desktop\Storage\Digital Programing\.NET\Clases UTN x Neoris\Trabajo Integrador\TP FINAL - Grupo 8 - Neoris x UTN\bin\Debug\TP FINAL - Grupo 8 - Neoris x UTN.pdb
+C:\Users\User\Desktop\Storage\Digital Programing\.NET\Clases UTN x Neoris\Trabajo Integrador\TP FINAL - Grupo 8 - Neoris x UTN\obj\Debug\TP FINAL - Grupo 8 - Neoris x UTN.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\Storage\Digital Programing\.NET\Clases UTN x Neoris\Trabajo Integrador\TP FINAL - Grupo 8 - Neoris x UTN\obj\Debug\TP FINAL - Grupo 8 - Neoris x UTN.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\Storage\Digital Programing\.NET\Clases UTN x Neoris\Trabajo Integrador\TP FINAL - Grupo 8 - Neoris x UTN\obj\Debug\TP FINAL - Grupo 8 - Neoris x UTN.exe
+C:\Users\User\Desktop\Storage\Digital Programing\.NET\Clases UTN x Neoris\Trabajo Integrador\TP FINAL - Grupo 8 - Neoris x UTN\obj\Debug\TP FINAL - Grupo 8 - Neoris x UTN.pdb
+C:\Users\User\Desktop\Storage\Digital Programing\.NET\Clases UTN x Neoris\Trabajo Integrador\TP FINAL - Grupo 8 - Neoris x UTN\bin\Debug\Clientes.dll
+C:\Users\User\Desktop\Storage\Digital Programing\.NET\Clases UTN x Neoris\Trabajo Integrador\TP FINAL - Grupo 8 - Neoris x UTN\bin\Debug\Clientes.pdb
+C:\Users\User\Desktop\Storage\Digital Programing\.NET\Clases UTN x Neoris\Trabajo Integrador\TP FINAL - Grupo 8 - Neoris x UTN\obj\Debug\TP FINAL - Grupo 8 - Neoris x UTN.csproj.CopyComplete
