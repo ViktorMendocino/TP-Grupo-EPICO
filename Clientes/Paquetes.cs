@@ -6,15 +6,105 @@ using System.Threading.Tasks;
 
 namespace Clases_de_proyectos
 {
-    abstract class Paquetes 
+    public class Paquetes 
     {
+        public Paquetes()
+        {
+
+        }
+
         public string Nombre;
         public double precio, impuestos;
         public int Cant_dias;
         public DateTime Fecha_Viaje;
-        public bool Vigencia;
+        public bool Vigencia; //existencia del paquete
         public int CuotasContadas;
+        public double Cotizacion_Dolar;
+        public bool visa;
+        public int IDpaquetes;
+        public string Lugares;
+
+        
 
 
+        //Paquetes Nacionales
+        public Paquetes(string Nombre, double precio, double impuestos, int Cant_dias, DateTime Fecha_Viaje, bool Vigencia, int CuotasContadas)
+        {
+            this.Nombre = Nombre;
+            this.precio = precio;
+            this.impuestos = impuestos;
+            this.Cant_dias = Cant_dias;
+            this.Fecha_Viaje = Fecha_Viaje;
+            this.Vigencia = Vigencia;
+            this.CuotasContadas = CuotasContadas;
+            IDpaquetes++;
+        }
+
+        //Paquete Internacionales   cot dolar y visa
+        public Paquetes(string Nombre, double precio, double impuestos, int Cant_dias, DateTime Fecha_Viaje, bool Vigencia, int CuotasContadas, double Cotizacion_Dolar, bool visa)
+        {
+            this.Nombre = Nombre;
+            this.precio = precio;
+            this.impuestos = impuestos;
+            this.Cant_dias = Cant_dias;
+            this.Fecha_Viaje = Fecha_Viaje;
+            this.Vigencia = Vigencia;
+            this.CuotasContadas = CuotasContadas;
+            this.Cotizacion_Dolar = Cotizacion_Dolar;
+            this.visa = visa;
+            IDpaquetes++;
+        }
+        public void Destinos()
+        {
+            List<string> Destinos = new List<string>();
+
+            #region Destinos por defecto
+            Destinos.Add("Argentina");
+            Destinos.Add("Brasil");
+            Destinos.Add("USA");
+            Destinos.Add("Peru");
+            Destinos.Add("Portugal");
+            Destinos.Add("Chile");
+            Destinos.Add("Japon");
+            Destinos.Add("Uruguar");
+            Destinos.Add("Australia");
+            Destinos.Add("China");
+            #endregion
+            Console.WriteLine("Seleccione su Destino");
+            foreach (string Pais in Destinos)
+            {
+                Console.WriteLine($"{Pais}");
+            }
+            
+
+
+
+        }
+
+        public void MostrarPaquetesNac()
+        {
+            Console.WriteLine("********* PAQUETE ********* ");
+            Console.WriteLine("Fecha y hora: " + Fecha_Viaje);
+            Console.WriteLine("Precio: " + precio);
+            Console.WriteLine("impuestos: " + impuestos);
+            Console.WriteLine("Cantidad de Dias: " + Cant_dias);
+            Console.WriteLine("Vigencia: " + Vigencia);
+            Console.WriteLine("Cantidad de cuotas: " + CuotasContadas);
+
+        }
+        public void MostrarPaquetesInterNac()
+        {
+            Console.WriteLine("********* PAQUETE ********* ");
+            Console.WriteLine("Fecha y hora: " + Fecha_Viaje);
+            Console.WriteLine("Precio: " + precio);
+            Console.WriteLine("impuestos: " + impuestos);
+            Console.WriteLine("Cantidad de Dias: " + Cant_dias);
+            Console.WriteLine("Vigencia: " + Vigencia);
+            Console.WriteLine("Cantidad de cuotas: " + CuotasContadas);
+            Console.WriteLine("Cotizacion del Dolar: " + Cotizacion_Dolar);
+            Console.WriteLine("Requiere visa: " + visa);
+        }
+
+        
     }
 }

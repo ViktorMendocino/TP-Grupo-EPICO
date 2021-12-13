@@ -42,13 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clientes.cs" />
-    <Compile Include="Clientes_Corporativo.cs" />
     <Compile Include="Facturacion.cs" />
-    <Compile Include="Lugares.cs" />
     <Compile Include="Paquetes.cs" />
-    <Compile Include="Clientes_Particular.cs" />
-    <Compile Include="Paquetes_Internacionales.cs" />
-    <Compile Include="Paquetes_Nacionales.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
