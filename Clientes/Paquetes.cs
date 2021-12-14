@@ -56,6 +56,11 @@ namespace Clases_de_proyectos
         }
         public void Destinos()
         {
+            ConsoleKeyInfo opcion;
+            bool loopBoolean = true;
+                    
+            int orden = 0;
+
             List<string> Destinos = new List<string>();
 
             #region Destinos por defecto
@@ -66,18 +71,46 @@ namespace Clases_de_proyectos
             Destinos.Add("Portugal");
             Destinos.Add("Chile");
             Destinos.Add("Japon");
-            Destinos.Add("Uruguar");
+            Destinos.Add("Uruguay");
             Destinos.Add("Australia");
             Destinos.Add("China");
             #endregion
-            Console.WriteLine("Seleccione su Destino");
-            foreach (string Pais in Destinos)
+
+            while(loopBoolean = true) 
             {
-                Console.WriteLine($"{Pais}");
+
+                Console.WriteLine("Seleccione su Destino");
+                foreach (string Pais in Destinos)
+                {
+                    orden++;
+                    Console.WriteLine("  ***" + orden + " - " + Pais + "***");
+                }
+
+                Console.WriteLine("¿Desea Seleccionar o agregar un país nuevo?");
+                Console.WriteLine("[1] --> Continuar");
+                Console.WriteLine("[2] --> Agregar un destino nuevo");
+                Console.WriteLine(" ");
+
+                do
+                {
+                    opcion = Console.ReadKey(true);
+                } while (opcion.KeyChar < '1' || opcion.KeyChar > '2');
+                switch (opcion.KeyChar)
+                {
+                    case '1':
+                        break;
+
+                    case '2':
+                        Console.WriteLine("Ingrese el nombre de su destino nuevo");
+                        Destinos.Add(Console.ReadLine());
+
+                        break;
+                }
+
+
+
             }
             
-
-
 
         }
 
@@ -86,7 +119,7 @@ namespace Clases_de_proyectos
             Console.WriteLine("********* PAQUETE ********* ");
             Console.WriteLine("Fecha y hora: " + Fecha_Viaje);
             Console.WriteLine("Precio: " + precio);
-            Console.WriteLine("impuestos: " + impuestos);
+            Console.WriteLine("impuestos: " + impuestos + "%");
             Console.WriteLine("Cantidad de Dias: " + Cant_dias);
             Console.WriteLine("Vigencia: " + Vigencia);
             Console.WriteLine("Cantidad de cuotas: " + CuotasContadas);
@@ -97,7 +130,7 @@ namespace Clases_de_proyectos
             Console.WriteLine("********* PAQUETE ********* ");
             Console.WriteLine("Fecha y hora: " + Fecha_Viaje);
             Console.WriteLine("Precio: " + precio);
-            Console.WriteLine("impuestos: " + impuestos);
+            Console.WriteLine("impuestos: " + impuestos + "%");
             Console.WriteLine("Cantidad de Dias: " + Cant_dias);
             Console.WriteLine("Vigencia: " + Vigencia);
             Console.WriteLine("Cantidad de cuotas: " + CuotasContadas);

@@ -43,11 +43,6 @@ namespace TP_FINAL___Grupo_8___Neoris_x_UTN
             int Cant_dias, CuotasContadas;
             DateTime Fecha_Viaje;
 
-
-
-
-            
-
             List<Paquetes> lPaquetesNac  = new List<Paquetes>();
             List<Paquetes> lPaquetesInterNac = new List<Paquetes>();
 
@@ -177,17 +172,18 @@ namespace TP_FINAL___Grupo_8___Neoris_x_UTN
                                 #region ingreso de data de Paquete
 
 
-                                Console.WriteLine("Indique su Nombre ");
+                                Console.WriteLine("Introduzca el nombre del nuevo paquete");
                                 nombrePaquete = Console.ReadLine();
-                                Console.WriteLine("Indique el precio ");
-                                precio = Convert.ToDouble(Console.ReadLine());
-                                Console.WriteLine("Indique el impuesto");
+                                Console.WriteLine("Indique su valor en pesos $");
+                                Double.TryParse(Console.ReadLine(), out precio)
+                                //precio = Convert.ToDouble(Console.ReadLine());
+                                Console.WriteLine("agregar impuesto a cobrar en %");
                                 impuestos = Convert.ToDouble(Console.ReadLine());
-                                Console.WriteLine("Indique la cantidad de dias");
+                                Console.WriteLine("introduzca la cantidad de dias");
                                 Cant_dias = Convert.ToInt32(Console.ReadLine());
                                 Console.WriteLine("Indique la fecha del viaje");
                                 Fecha_Viaje = Convert.ToDateTime(Console.ReadLine());
-                                Console.WriteLine("Indique si se encuentra vigente el nombre (1 si, 2 no)");
+                                Console.WriteLine("Indique si se encuentra vigente el nombre");
                                 vigencia = Convert.ToBoolean(Console.ReadLine());
                                 Console.WriteLine("Indique la cantidad de cuotas contadas");
                                 CuotasContadas = Convert.ToInt32(Console.ReadLine());
