@@ -38,10 +38,12 @@ namespace TP_FINAL___Grupo_8___Neoris_x_UTN
 
             string nombreCliente, apellido, DNI, telefono, nacionalidad, provincia, direccion, razon_social, cuit;
             string nombrePaquete, lugares;
-            bool vigencia, visa;
+            bool visa;
             double precio, impuestos, Cotizacion_Dolar;
-            int Cant_dias, CuotasContadas;
+            int Cant_dias;
             DateTime Fecha_Viaje;
+            bool vigencia = false;
+            int CuotasContadas = 1;
 
             List<Paquetes> lPaquetesNac  = new List<Paquetes>();
             List<Paquetes> lPaquetesInterNac = new List<Paquetes>();
@@ -172,25 +174,51 @@ namespace TP_FINAL___Grupo_8___Neoris_x_UTN
                                 #region ingreso de data de Paquete
 
 
-                                Console.WriteLine("Introduzca el nombre del nuevo paquete");
+                                Console.WriteLine("Introduzca el nombre del Nuevo Paquete");
                                 nombrePaquete = Console.ReadLine();
-                                Console.WriteLine("Indique su valor en pesos $");
-                                Double.TryParse(Console.ReadLine(), out precio)
-                                //precio = Convert.ToDouble(Console.ReadLine());
-                                Console.WriteLine("agregar impuesto a cobrar en %");
-                                impuestos = Convert.ToDouble(Console.ReadLine());
-                                Console.WriteLine("introduzca la cantidad de dias");
-                                Cant_dias = Convert.ToInt32(Console.ReadLine());
+                                Console.WriteLine("Introducir el valor del paquete en Pesos $");
+                                Double.TryParse(Console.ReadLine(), out precio);
+                                Console.WriteLine("Agregar el impuesto del paquete en %");
+                                Double.TryParse(Console.ReadLine(), out impuestos);
+                                Console.WriteLine("Ingrese la duracion del paquete en cantidad de dias");
+                                Int32.TryParse(Console.ReadLine(), out Cant_dias);
                                 Console.WriteLine("Indique la fecha del viaje");
-                                Fecha_Viaje = Convert.ToDateTime(Console.ReadLine());
-                                Console.WriteLine("Indique si se encuentra vigente el nombre");
-                                vigencia = Convert.ToBoolean(Console.ReadLine());
-                                Console.WriteLine("Indique la cantidad de cuotas contadas");
-                                CuotasContadas = Convert.ToInt32(Console.ReadLine());
-                               
-                                #endregion 
-
+                                Console.WriteLine("En formato DD/MM/AA");
+                                DateTime.TryParse(Console.ReadLine(), out Fecha_Viaje);
+                                //Fecha_Viaje = Convert.ToDateTime(Console.ReadLine());
+                                Console.WriteLine("Indique la Vigencia de Paquete");
+                                Console.WriteLine("[1] --> Paquete Vigente");
+                                Console.WriteLine("[2] --> Paquete No Vigente");
+                                string pregunta = Console.ReadLine().Trim();//.Trim elimina los espacios en blanco antes o despues 
+                                if (pregunta == "1")
+                                    vigencia = true;
+                                if (pregunta == "2")
+                                    vigencia = false;
+                                //vigencia = Convert.ToBoolean(Console.ReadLine());
+                                Console.WriteLine("Ingresar Tipo de Pago Ofrecido");
+                                Console.WriteLine("[1] --> Contado efectivo");
+                                Console.WriteLine("[2] --> financiado en Cuotas");
+                                string preguntaCuotas = Console.ReadLine().Trim();
+                                if (preguntaCuotas == "1")
+                                    CuotasContadas = 1;
+                                else if (preguntaCuotas == "2")
+                                {
+                                    Console.WriteLine("[1] --> financiado en 3 Cuotas");
+                                    Console.WriteLine("[2] --> financiado en 6 Cuotas");
+                                    Console.WriteLine("[3] --> financiado en 12 Cuotas");
+                                    string preguntaCuotas2 = Console.ReadLine().Trim();
+                                    if (preguntaCuotas2 == "1")
+                                        CuotasContadas = 3;
+                                    else if (preguntaCuotas2 == "2")
+                                        CuotasContadas = 6;
+                                    else if (preguntaCuotas2 == "3")
+                                        CuotasContadas = 12;
+                                }
+                                    #endregion
+                                    
                                 Paquetes PaqueteNac = new Paquetes(nombrePaquete, precio, impuestos, Cant_dias, Fecha_Viaje, vigencia, CuotasContadas);
+                                Console.WriteLine("------DATOS INGRESADOS------");
+                                PaqueteNac.MostrarPaquetesNac();
                                 PaqueteNac.Destinos();
                                 lPaquetesNac.Add(PaqueteNac);
                                 Console.WriteLine("------DATOS INGRESADOS------");
