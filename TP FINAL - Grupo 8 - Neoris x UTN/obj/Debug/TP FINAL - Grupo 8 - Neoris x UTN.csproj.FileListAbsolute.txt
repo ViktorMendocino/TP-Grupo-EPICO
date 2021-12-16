@@ -17,4 +17,3 @@ D:\Trabajo Final Grupo 8 epico neoris\TP-Grupo-EPICO\TP FINAL - Grupo 8 - Neoris
 D:\Trabajo Final Grupo 8 epico neoris\TP-Grupo-EPICO\TP FINAL - Grupo 8 - Neoris x UTN\bin\Debug\TP FINAL - Grupo 8 - Neoris x UTN.pdb
 D:\Trabajo Final Grupo 8 epico neoris\TP-Grupo-EPICO\TP FINAL - Grupo 8 - Neoris x UTN\bin\Debug\Clientes.dll
 D:\Trabajo Final Grupo 8 epico neoris\TP-Grupo-EPICO\TP FINAL - Grupo 8 - Neoris x UTN\bin\Debug\Clientes.pdb
-D:\Trabajo Final Grupo 8 epico neoris\TP-Grupo-EPICO\TP FINAL - Grupo 8 - Neoris x UTN\obj\Debug\TP FINAL - Grupo 8 - Neoris x UTN.csproj.CopyComplete

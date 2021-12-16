@@ -38,7 +38,7 @@ namespace TP_FINAL___Grupo_8___Neoris_x_UTN
 
             string nombreCliente, apellido, DNI, telefono, nacionalidad, provincia, direccion, razon_social, cuit;
             string nombrePaquete, lugares;
-            bool visa;
+            bool visa=true;
             double precio, impuestos, Cotizacion_Dolar;
             int Cant_dias;
             DateTime Fecha_Viaje;
@@ -231,25 +231,55 @@ namespace TP_FINAL___Grupo_8___Neoris_x_UTN
                                 #region ingreso de data de Paquete
 
                                 //remplazar data ingreso de paquetes            //Convert.ToInt32(Console.ReadLine);     
-                                Console.WriteLine("Indique su Nombre ");
+                                Console.WriteLine("Introduzca el nombre del Nuevo Paquete");
                                 nombrePaquete = Console.ReadLine();
-                                Console.WriteLine("Indique el precio ");
-                                precio = Convert.ToDouble(Console.ReadLine());
-                                Console.WriteLine("Indique el impuesto");
-                                impuestos = Convert.ToDouble(Console.ReadLine());
-                                Console.WriteLine("Indique la cantidad de dias");
-                                Cant_dias = Convert.ToInt32(Console.ReadLine());
+                                Console.WriteLine("Introducir el valor del paquete en Dolares USD");
+                                Double.TryParse(Console.ReadLine(), out precio);
+                                Console.WriteLine("Agregar el impuesto del paquete en Valor Fijo");
+                                Double.TryParse(Console.ReadLine(), out impuestos);
+                                Console.WriteLine("Ingrese la duracion del paquete en cantidad de dias");
+                                Int32.TryParse(Console.ReadLine(), out Cant_dias);
                                 Console.WriteLine("Indique la fecha del viaje");
-                                Fecha_Viaje = Convert.ToDateTime(Console.ReadLine());
-                                Console.WriteLine("Indique si se encuentra vigente el nombre (1 si, 2 no)");
-                                vigencia = Convert.ToBoolean(Console.ReadLine());
-                                Console.WriteLine("Indique la cantidad de cuotas contadas");
-                                CuotasContadas = Convert.ToInt32(Console.ReadLine());
+                                Console.WriteLine("En formato DD/MM/AA");
+                                DateTime.TryParse(Console.ReadLine(), out Fecha_Viaje);
+                                Console.WriteLine("Indique la Vigencia de Paquete");
+                                Console.WriteLine("[1] --> Paquete Vigente");
+                                Console.WriteLine("[2] --> Paquete No Vigente");
+                                string preguntaInter = Console.ReadLine().Trim();//.Trim elimina los espacios en blanco antes o despues 
+                                if (preguntaInter == "1")
+                                    vigencia = true;
+                                if (preguntaInter == "2")
+                                    vigencia = false;
+                                //vigencia = Convert.ToBoolean(Console.ReadLine());
+                                Console.WriteLine("Ingresar Tipo de Pago Ofrecido");
+                                Console.WriteLine("[1] --> Contado efectivo");
+                                Console.WriteLine("[2] --> financiado en Cuotas");
+                                string preguntaCuotasInter = Console.ReadLine().Trim();
+                                if (preguntaCuotasInter == "1")
+                                    CuotasContadas = 1;
+                                else if (preguntaCuotasInter == "2")
+                                {
+                                    Console.WriteLine("[1] --> financiado en 3 Cuotas");
+                                    Console.WriteLine("[2] --> financiado en 6 Cuotas");
+                                    string preguntaCuotasInter2 = Console.ReadLine().Trim();
+                                    if (preguntaCuotasInter2 == "1")
+                                        CuotasContadas = 3;
+                                    else if (preguntaCuotasInter2 == "2")
+                                        CuotasContadas = 6;
+                                  
+                                }
                                 #endregion
 
                                 #region Datos Paquetes Internacionales
                                 Console.WriteLine("¿Es necesario VISA?");
-                                visa = Convert.ToBoolean(Console.ReadLine());
+                                Console.WriteLine("[1] --> Si es necesario");
+                                Console.WriteLine("[2] --> No es necesario");
+                                string preguntaVisa = Console.ReadLine().Trim();//.Trim elimina los espacios en blanco antes o despues 
+                                if (preguntaVisa == "si")
+                                    visa = true;
+                                else if (preguntaVisa == "no")
+                                    visa = false;
+                                //visa = Convert.ToBoolean(Console.ReadLine());
                                 Console.WriteLine("Ingrese la Cotizacion del dolar");
                                 Cotizacion_Dolar = Convert.ToDouble(Console.ReadLine());
                                 #endregion
@@ -257,7 +287,7 @@ namespace TP_FINAL___Grupo_8___Neoris_x_UTN
                                 Paquetes PaqueteInterNac = new Paquetes(nombrePaquete, precio, impuestos, Cant_dias, Fecha_Viaje, vigencia, CuotasContadas, Cotizacion_Dolar, visa);
                                 lPaquetesNac.Add(PaqueteInterNac);
                                 Console.WriteLine("------DATOS INGRESADOS------");
-                                PaqueteInterNac.MostrarPaquetesNac();
+                                PaqueteInterNac.MostrarPaquetesInterNac();
                                 Console.WriteLine(" ");
                                 break;
                         }
