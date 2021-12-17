@@ -34,14 +34,19 @@ namespace TP_FINAL___Grupo_8___Neoris_x_UTN
         static void Main(string[] args)
         {
             ConsoleKeyInfo opcion;
-            ConsoleKeyInfo opcion2;
+            
+            
 
-            string nombreCliente, apellido, DNI, telefono, nacionalidad, provincia, direccion, razon_social, cuit;
+            string nombreCliente, apellido, telefono, nacionalidad, provincia, direccion, razon_social, cuit;
+            int DNI;
             string nombrePaquete, lugares;
             bool vigencia, visa;
             double precio, impuestos, Cotizacion_Dolar;
             int Cant_dias, CuotasContadas;
             DateTime Fecha_Viaje;
+
+            Clientes c;
+            Paquetes p;
 
             List<Paquetes> lPaquetesNac  = new List<Paquetes>();
             List<Paquetes> lPaquetesInterNac = new List<Paquetes>();
@@ -51,6 +56,7 @@ namespace TP_FINAL___Grupo_8___Neoris_x_UTN
 
             do
             {
+
                 Introduccion();
 
                 do
@@ -71,9 +77,9 @@ namespace TP_FINAL___Grupo_8___Neoris_x_UTN
                         Console.WriteLine("[0] --> Regresar al Menu");
                         do
                         {
-                            opcion2 = Console.ReadKey(true);
-                        } while (opcion2.KeyChar < '0' || opcion2.KeyChar > '2');
-                        switch (opcion2.KeyChar) 
+                            opcion = Console.ReadKey(true);
+                        } while (opcion.KeyChar < '0' || opcion.KeyChar > '2');
+                        switch (opcion.KeyChar) 
                         {
                             case '0':
                                 Console.WriteLine(" ");
@@ -83,24 +89,8 @@ namespace TP_FINAL___Grupo_8___Neoris_x_UTN
 
                             case '1':
 
-                                #region ingreso de data de Clientes
-
-                                Console.WriteLine("Indique su Nombre ");
-                                nombreCliente = Console.ReadLine();
-                                Console.WriteLine("Indique su Apellido ");
-                                apellido = Console.ReadLine();
-                                Console.WriteLine("Indique su DNI");
-                                DNI = Console.ReadLine();
-                                Console.WriteLine("Indique su Telefono ");
-                                telefono = Console.ReadLine();
-                                Console.WriteLine("Indique su Nacionalidad");
-                                nacionalidad = Console.ReadLine();
-                                Console.WriteLine("Indique su Provincia ");
-                                provincia = Console.ReadLine();
-                                Console.WriteLine("Indique su direccion");
-                                direccion = Console.ReadLine();
-                                #endregion
-                                Clientes NewClienteConsFinal = new Clientes(nombreCliente, apellido,DNI, telefono,  nacionalidad,  provincia,  direccion);
+                                Ingreso_data_clientes();
+                                Clientes NewClienteConsFinal = new Clientes(nombreCliente, apellido, DNI, telefono,  nacionalidad,  provincia,  direccion);
                                 lclientes_ConsFinal.Add(NewClienteConsFinal);
                                 Console.WriteLine("------DATOS INGRESADOS------");
                                 NewClienteConsFinal.MostrarClientesConsFinal();
@@ -109,23 +99,7 @@ namespace TP_FINAL___Grupo_8___Neoris_x_UTN
 
                             case '2':
 
-                                #region ingreso de data de Clientes
-
-                                Console.WriteLine("Indique su Nombre ");
-                                nombreCliente = Console.ReadLine();
-                                Console.WriteLine("Indique su Apellido ");
-                                apellido = Console.ReadLine();
-                                Console.WriteLine("Indique su DNI");
-                                DNI = Console.ReadLine();
-                                Console.WriteLine("Indique su Telefono ");
-                                telefono = Console.ReadLine();
-                                Console.WriteLine("Indique su Nacionalidad");
-                                nacionalidad = Console.ReadLine();
-                                Console.WriteLine("Indique su Provincia ");
-                                provincia = Console.ReadLine();
-                                Console.WriteLine("Indique su direccion");
-                                direccion = Console.ReadLine();
-                                #endregion
+                                Ingreso_data_clientes();
                                 #region Datos Clientes Corporativos
                                 Console.WriteLine("Ingrese su razon social ");
                                 razon_social = Console.ReadLine();
@@ -140,6 +114,8 @@ namespace TP_FINAL___Grupo_8___Neoris_x_UTN
                                 Console.WriteLine(" ");
                                 break;
                         }
+
+                        
                         break;
                     #endregion      
 
@@ -156,9 +132,9 @@ namespace TP_FINAL___Grupo_8___Neoris_x_UTN
 
                         do
                         {
-                            opcion2 = Console.ReadKey(true);
-                        } while (opcion2.KeyChar < '0' || opcion2.KeyChar > '2');
-                        switch (opcion2.KeyChar)
+                            opcion = Console.ReadKey(true);
+                        } while (opcion.KeyChar < '0' || opcion.KeyChar > '2');
+                        switch (opcion.KeyChar)
                         {
                             case '0':
                                 Console.WriteLine(" ");
@@ -168,28 +144,7 @@ namespace TP_FINAL___Grupo_8___Neoris_x_UTN
 
                             case '1':
 
-                                //agregar tryparse y corregir las preguntas
-                                #region ingreso de data de Paquete
-
-
-                                Console.WriteLine("Introduzca el nombre del nuevo paquete");
-                                nombrePaquete = Console.ReadLine();
-                                Console.WriteLine("Indique su valor en pesos $");
-                                Double.TryParse(Console.ReadLine(), out precio)
-                                //precio = Convert.ToDouble(Console.ReadLine());
-                                Console.WriteLine("agregar impuesto a cobrar en %");
-                                impuestos = Convert.ToDouble(Console.ReadLine());
-                                Console.WriteLine("introduzca la cantidad de dias");
-                                Cant_dias = Convert.ToInt32(Console.ReadLine());
-                                Console.WriteLine("Indique la fecha del viaje");
-                                Fecha_Viaje = Convert.ToDateTime(Console.ReadLine());
-                                Console.WriteLine("Indique si se encuentra vigente el nombre");
-                                vigencia = Convert.ToBoolean(Console.ReadLine());
-                                Console.WriteLine("Indique la cantidad de cuotas contadas");
-                                CuotasContadas = Convert.ToInt32(Console.ReadLine());
-                               
-                                #endregion 
-
+                                Ingreso_data_paquetes();
                                 Paquetes PaqueteNac = new Paquetes(nombrePaquete, precio, impuestos, Cant_dias, Fecha_Viaje, vigencia, CuotasContadas);
                                 PaqueteNac.Destinos();
                                 lPaquetesNac.Add(PaqueteNac);
@@ -200,25 +155,7 @@ namespace TP_FINAL___Grupo_8___Neoris_x_UTN
 
                             case '2':
 
-                                #region ingreso de data de Paquete
-
-                                //remplazar data ingreso de paquetes            //Convert.ToInt32(Console.ReadLine);     
-                                Console.WriteLine("Indique su Nombre ");
-                                nombrePaquete = Console.ReadLine();
-                                Console.WriteLine("Indique el precio ");
-                                precio = Convert.ToDouble(Console.ReadLine());
-                                Console.WriteLine("Indique el impuesto");
-                                impuestos = Convert.ToDouble(Console.ReadLine());
-                                Console.WriteLine("Indique la cantidad de dias");
-                                Cant_dias = Convert.ToInt32(Console.ReadLine());
-                                Console.WriteLine("Indique la fecha del viaje");
-                                Fecha_Viaje = Convert.ToDateTime(Console.ReadLine());
-                                Console.WriteLine("Indique si se encuentra vigente el nombre (1 si, 2 no)");
-                                vigencia = Convert.ToBoolean(Console.ReadLine());
-                                Console.WriteLine("Indique la cantidad de cuotas contadas");
-                                CuotasContadas = Convert.ToInt32(Console.ReadLine());
-                                #endregion
-
+                                Ingreso_data_paquetes();
                                 #region Datos Paquetes Internacionales
                                 Console.WriteLine("¿Es necesario VISA?");
                                 visa = Convert.ToBoolean(Console.ReadLine());
@@ -233,6 +170,8 @@ namespace TP_FINAL___Grupo_8___Neoris_x_UTN
                                 Console.WriteLine(" ");
                                 break;
                         }
+
+                        
                         break;
                     #endregion
 
@@ -247,7 +186,111 @@ namespace TP_FINAL___Grupo_8___Neoris_x_UTN
 
                     #region caso_Ajustes
                     case '4':
-                        Console.WriteLine("*** ¡Ajustes! ***");
+                        Console.WriteLine("*** ¿Que desea Modificar? ***");
+                        Console.WriteLine("[1] --> Clientes");
+                        Console.WriteLine("[2] --> Paquetes");
+                        Console.WriteLine("[0] --> Regresar al Menu");
+                        Console.WriteLine(" ");
+                        do
+                        {
+                            opcion = Console.ReadKey(true);
+                        } while (opcion.KeyChar < '0' || opcion.KeyChar > '2');
+                        switch (opcion.KeyChar)
+                        {
+                            case '0':
+                                Console.WriteLine(" ");
+                                Console.WriteLine("Regresando al Menu... ");
+                                Console.WriteLine(" ");
+                                
+                                break;
+
+                            case '1':
+                                Console.WriteLine("***¡Editando un Cliente!*** ");
+                                Console.WriteLine(" ");
+                                Console.WriteLine("[1] --> Cliente Consumidor Final");
+                                Console.WriteLine("[2] --> Cliente Corporativo");
+                                do
+                                {
+                                    opcion = Console.ReadKey(true);
+                                } while (opcion.KeyChar < '0' || opcion.KeyChar > '2');
+                                switch (opcion.KeyChar) 
+                                {
+                                    case '1':
+                                        Console.WriteLine(" Ingrese el DNI de su Cliente ");
+                                        int.TryParse(Console.ReadLine(), out DNI);
+                                        c = lclientes_ConsFinal.Find(x => x.DNI == DNI);
+
+                                        if (c != null)
+                                        {
+                                            Console.WriteLine("EDITANDO CLIENTE: " + c.nombre + " " + c.apellido);
+                                            Console.WriteLine("*******************");
+                                            c.MostrarClientesConsFinal();
+                                            Console.WriteLine("*******************");
+                                            Console.WriteLine(" ");
+
+                                            Ajustes_Seleccion();
+                                            do
+                                            {
+                                                opcion = Console.ReadKey(true);
+                                            } while (opcion.KeyChar < '1' || opcion.KeyChar > '7');
+
+                                            Ajustes_Edicion();
+                                            
+                                            c.MostrarClientesConsFinal();
+
+                                        }
+                                        else { Console.WriteLine("el DNI que ingreso no pertenece a un Cliente de Consumidor Final existente :("); }
+
+                                            break;
+
+                                    case '2':
+
+                                        Console.WriteLine(" Ingrese el DNI de su Cliente ");
+                                        int.TryParse(Console.ReadLine(), out DNI);
+                                        c = lclientes_Corporativos.Find(x => x.DNI == DNI);
+
+                                        if (c != null)
+                                        {
+                                            Console.WriteLine("EDITANDO CLIENTE: " + c.nombre + " " + c.apellido);
+                                            Console.WriteLine("*******************");
+                                            c.MostrarClientesConsFinal();
+                                            Console.WriteLine("*******************");
+                                            Console.WriteLine(" ");
+
+                                            Ajustes_Seleccion();
+                                            #region Seleccion datos Corp
+                                            Console.WriteLine("[8] --> razon social: " + c.razon_social);
+                                            Console.WriteLine("[9] --> cuit: " + c.cuit);
+                                            #endregion
+
+                                            do
+                                            {
+                                                opcion = Console.ReadKey(true);
+                                            } while (opcion.KeyChar < '1' || opcion.KeyChar > '9');
+
+                                            Ajustes_Edicion();
+
+                                            c.MostrarClientesCorp();
+
+                                        }
+                                        else { Console.WriteLine("el DNI que ingreso no pertenece a un Cliente Corporativo existente :("); }
+
+
+
+                                        break;
+                                }
+
+
+
+
+                                break;
+
+                            case '2':
+                                Console.WriteLine("***¡Editar un Paquete! ");
+                                break;
+                        }
+
+
 
                         break;
                     #endregion
@@ -273,7 +316,111 @@ namespace TP_FINAL___Grupo_8___Neoris_x_UTN
                 Console.WriteLine("4 - Ajustes");
                 Console.WriteLine("5 - Ver Factura");
                 Console.WriteLine("ESC - Salir");
+                Console.WriteLine(" ");
             }
+
+            void Ingreso_data_clientes() 
+            {
+                Console.WriteLine("Indique su Nombre ");
+                nombreCliente = Console.ReadLine();
+                Console.WriteLine("Indique su Apellido ");
+                apellido = Console.ReadLine();
+                Console.WriteLine("Indique su DNI");
+                int.TryParse(Console.ReadLine(), out DNI);
+                Console.WriteLine("Indique su Telefono ");
+                telefono = Console.ReadLine();
+                Console.WriteLine("Indique su Nacionalidad");
+                nacionalidad = Console.ReadLine();
+                Console.WriteLine("Indique su Provincia ");
+                provincia = Console.ReadLine();
+                Console.WriteLine("Indique su direccion");
+                direccion = Console.ReadLine();
+            }
+
+            void Ingreso_data_paquetes() 
+            {
+                Console.WriteLine("Introduzca el nombre del nuevo paquete");
+                nombrePaquete = Console.ReadLine();
+                Console.WriteLine("Indique su valor en pesos $");
+                Double.TryParse(Console.ReadLine(), out precio);
+                //precio = Convert.ToDouble(Console.ReadLine());
+                Console.WriteLine("agregar impuesto a cobrar en %");
+                impuestos = Convert.ToDouble(Console.ReadLine());
+                Console.WriteLine("introduzca la cantidad de dias");
+                Cant_dias = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Indique la fecha del viaje");
+                Fecha_Viaje = Convert.ToDateTime(Console.ReadLine());
+                Console.WriteLine("Indique si se encuentra vigente el nombre");
+                vigencia = Convert.ToBoolean(Console.ReadLine());
+                Console.WriteLine("Indique la cantidad de cuotas contadas");
+                CuotasContadas = Convert.ToInt32(Console.ReadLine());
+            }
+
+            void Ajustes_Seleccion() 
+            {
+                Console.WriteLine("**¿Que desea Editar?**");
+                Console.WriteLine("[1] --> nombre: " + c.nombre);
+                Console.WriteLine("[2] --> apellido: " + c.apellido);
+                Console.WriteLine("[3] --> DNI: " + c.DNI);
+                Console.WriteLine("[4] --> telefono: " + c.telefono);
+                Console.WriteLine("[5] --> nacionalidad: " + c.nacionalidad);
+                Console.WriteLine("[6] --> provincia: " + c.provincia);
+                Console.WriteLine("[7] --> direccion: " + c.direccion);
+            }
+
+            void Ajustes_Edicion() 
+            {
+                
+                switch (opcion.KeyChar)
+                {
+                    case '1':
+                        Console.WriteLine("Indique su Nombre ");
+                        c.nombre = Console.ReadLine();
+                        break;
+
+                    case '2':
+                        Console.WriteLine("Indique su Apellido ");
+                        c.apellido = Console.ReadLine();
+                        break;
+
+                    case '3':
+                        Console.WriteLine("Indique su DNI");
+                        int.TryParse(Console.ReadLine(), out c.DNI);
+                        break;
+
+                    case '4':
+                        Console.WriteLine("Indique su Telefono ");
+                        c.telefono = Console.ReadLine();
+                        break;
+
+                    case '5':
+                        Console.WriteLine("Indique su Nacionalidad");
+                        c.nacionalidad = Console.ReadLine();
+                        break;
+
+                    case '6':
+                        Console.WriteLine("Indique su Provincia ");
+                        c.provincia = Console.ReadLine();
+                        break;
+
+                    case '7':
+                        Console.WriteLine("Indique su direccion");
+                        c.direccion = Console.ReadLine();
+                        break;
+
+                    case '8':
+                        Console.WriteLine("Ingrese su razon social ");
+                        c.razon_social = Console.ReadLine();
+                        break;
+
+                    case '9':
+                        Console.WriteLine("Ingrese su CUIT");
+                        c.cuit = Console.ReadLine();
+                        break;
+                }
+            }
+
+            
 
             
 

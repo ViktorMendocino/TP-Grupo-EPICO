@@ -9,9 +9,9 @@ namespace Clases_de_proyectos
 {
     public class Clientes
     {
-        public string nombre, apellido, DNI, telefono, nacionalidad, provincia, direccion, razon_social,  cuit;
+        public string nombre, apellido,  telefono, nacionalidad, provincia, direccion, razon_social,  cuit;
 
-        public static int Id_Cliente = 0;
+        public int DNI;
 
         public Clientes() //por defecto 
         {
@@ -20,7 +20,7 @@ namespace Clases_de_proyectos
 
 
         //clientes Consumidor Final
-        public Clientes(string nombre, string apellido, string DNI, string telefono, string nacionalidad, string provincia, string direccion) 
+        public Clientes(string nombre, string apellido, int DNI, string telefono, string nacionalidad, string provincia, string direccion) 
         {
             this.nombre = nombre;
             this.apellido = apellido;
@@ -34,7 +34,7 @@ namespace Clases_de_proyectos
         }
 
         //clientes Corporativos
-        public Clientes(string nombre, string apellido, string DNI, string telefono, string nacionalidad, string provincia, string direccion, string razon_social, string cuit) 
+        public Clientes(string nombre, string apellido, int DNI, string telefono, string nacionalidad, string provincia, string direccion, string razon_social, string cuit) 
         {
             this.nombre = nombre;
             this.apellido = apellido;
@@ -53,7 +53,6 @@ namespace Clases_de_proyectos
 
         public void MostrarClientesConsFinal()
         {
-            Console.WriteLine("ID: " + Id_Cliente);
             Console.WriteLine("nombre: " + nombre);
             Console.WriteLine("apellido: " + apellido);
             Console.WriteLine("DNI: " + DNI);
@@ -73,7 +72,7 @@ namespace Clases_de_proyectos
             Console.WriteLine("nacionalidad: " + nacionalidad);
             Console.WriteLine("provincia: " + provincia);
             Console.WriteLine("direccion: " + direccion);
-            Console.WriteLine("razon social: " + direccion);
+            Console.WriteLine("razon social: " + razon_social);
             Console.WriteLine("cuit: " + cuit);
 
         }

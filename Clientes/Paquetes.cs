@@ -102,7 +102,7 @@ namespace Clases_de_proyectos
 
                     case '2':
                         Console.WriteLine("Ingrese el nombre de su destino nuevo");
-                        Destinos.Add(Console.ReadLine());
+                        Destinos.Add(Console.ReadLine()); 
 
                         break;
                 }
