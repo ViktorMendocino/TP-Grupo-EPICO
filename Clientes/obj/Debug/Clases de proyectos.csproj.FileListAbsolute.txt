@@ -4,3 +4,9 @@ C:\Users\User\Desktop\Storage\Digital Programing\.NET\Clases UTN x Neoris\Trabaj
 C:\Users\User\Desktop\Storage\Digital Programing\.NET\Clases UTN x Neoris\Trabajo Integrador\Clientes\obj\Debug\Clientes.dll
 C:\Users\User\Desktop\Storage\Digital Programing\.NET\Clases UTN x Neoris\Trabajo Integrador\Clientes\obj\Debug\Clientes.pdb
 C:\Users\User\Desktop\Storage\Digital Programing\.NET\Clases UTN x Neoris\Trabajo Integrador\Clientes\obj\Debug\Clases de proyectos.csproj.AssemblyReference.cache
+D:\Trabajo Final Grupo 8 epico neoris\TP-Grupo-EPICO\Clientes\bin\Debug\Clientes.dll
+D:\Trabajo Final Grupo 8 epico neoris\TP-Grupo-EPICO\Clientes\bin\Debug\Clientes.pdb
+D:\Trabajo Final Grupo 8 epico neoris\TP-Grupo-EPICO\Clientes\obj\Debug\Clases de proyectos.csproj.AssemblyReference.cache
+D:\Trabajo Final Grupo 8 epico neoris\TP-Grupo-EPICO\Clientes\obj\Debug\Clases de proyectos.csproj.CoreCompileInputs.cache
+D:\Trabajo Final Grupo 8 epico neoris\TP-Grupo-EPICO\Clientes\obj\Debug\Clientes.dll
+D:\Trabajo Final Grupo 8 epico neoris\TP-Grupo-EPICO\Clientes\obj\Debug\Clientes.pdb

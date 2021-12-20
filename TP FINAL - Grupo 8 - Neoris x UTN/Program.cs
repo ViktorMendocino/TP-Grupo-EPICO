@@ -27,23 +27,28 @@ namespace TP_FINAL___Grupo_8___Neoris_x_UTN
         // 2.Listar todas las facturas de un cliente y el total de sus ventas
         // 3.Inactivar un paquete.
         // 4.Actualizar el precio de un paquete.
-        // 5.Listar los clientes que han tenido al menos dos ventas.
-        // Todo lo que puedan/quieran agregar sobre ésto será bienvenido.
+        // 5.Listar los clientes que han tenido al menos dos ventas.  
+        // Todo lo que puedan/quieran agregar sobre ésto será bienvenido. 
         #endregion
 
         static void Main(string[] args)
         {
             ConsoleKeyInfo opcion;
-            
-            
+            bool loopBoolean = true;
+
+
 
             string nombreCliente, apellido, telefono, nacionalidad, provincia, direccion, razon_social, cuit;
             int DNI;
             string nombrePaquete, lugares;
-            bool vigencia, visa;
+            bool visa=true;
             double precio, impuestos, Cotizacion_Dolar;
-            int Cant_dias, CuotasContadas;
+            int Cant_dias;
             DateTime Fecha_Viaje;
+            bool vigencia = false;
+
+            string preguntaCuotas;
+            int CuotasContadas = 1;
 
             Clientes c;
             Paquetes p;
@@ -79,7 +84,7 @@ namespace TP_FINAL___Grupo_8___Neoris_x_UTN
                         {
                             opcion = Console.ReadKey(true);
                         } while (opcion.KeyChar < '0' || opcion.KeyChar > '2');
-                        switch (opcion.KeyChar) 
+                        switch (opcion.KeyChar)
                         {
                             case '0':
                                 Console.WriteLine(" ");
@@ -90,7 +95,11 @@ namespace TP_FINAL___Grupo_8___Neoris_x_UTN
                             case '1':
 
                                 Ingreso_data_clientes();
-                                Clientes NewClienteConsFinal = new Clientes(nombreCliente, apellido, DNI, telefono,  nacionalidad,  provincia,  direccion);
+
+
+
+
+                                Clientes NewClienteConsFinal = new Clientes(nombreCliente, apellido, DNI, telefono, nacionalidad, provincia, direccion);
                                 lclientes_ConsFinal.Add(NewClienteConsFinal);
                                 Console.WriteLine("------DATOS INGRESADOS------");
                                 NewClienteConsFinal.MostrarClientesConsFinal();
@@ -107,7 +116,7 @@ namespace TP_FINAL___Grupo_8___Neoris_x_UTN
                                 cuit = Console.ReadLine();
                                 #endregion
                                 Console.WriteLine(" ");
-                                Clientes NewClientecorp = new Clientes(nombreCliente, apellido,  DNI,  telefono,  nacionalidad,  provincia,  direccion, razon_social, cuit);
+                                Clientes NewClientecorp = new Clientes(nombreCliente, apellido, DNI, telefono, nacionalidad, provincia, direccion, razon_social, cuit);
                                 lclientes_Corporativos.Add(NewClientecorp);
                                 Console.WriteLine("------DATOS INGRESADOS------");
                                 NewClientecorp.MostrarClientesCorp();
@@ -115,7 +124,7 @@ namespace TP_FINAL___Grupo_8___Neoris_x_UTN
                                 break;
                         }
 
-                        
+
                         break;
                     #endregion      
 
@@ -144,8 +153,39 @@ namespace TP_FINAL___Grupo_8___Neoris_x_UTN
 
                             case '1':
 
-                                Ingreso_data_paquetes();
+                                Console.WriteLine("Introduzca el nombre del Nuevo Paquete Nacional");
+                                nombrePaquete = Console.ReadLine();
+                                Console.WriteLine("Introducir el valor del paquete en Pesos $");
+                                Double.TryParse(Console.ReadLine(), out precio);
+                                Console.WriteLine("Agregar el impuesto del paquete en %");
+                                Double.TryParse(Console.ReadLine(), out impuestos);
+
+                                Ingreso_data_restantes_de_paquetes();
+
+                                #region Cuotas Nacionales
+                                Console.WriteLine("Ingresar Tipo de Pago Ofrecido");
+                                Console.WriteLine("[1] --> Contado efectivo");
+                                Console.WriteLine("[2] --> financiado en Cuotas");
+                                preguntaCuotas = Console.ReadLine().Trim();
+                                if (preguntaCuotas == "1")
+                                    CuotasContadas = 1;
+                                else if (preguntaCuotas == "2")
+                                {
+                                    Console.WriteLine("[1] --> financiado en 3 Cuotas");
+                                    Console.WriteLine("[2] --> financiado en 6 Cuotas");
+                                    Console.WriteLine("[3] --> financiado en 12 Cuotas");
+                                    preguntaCuotas = Console.ReadLine().Trim();
+                                    if (preguntaCuotas == "1")
+                                        CuotasContadas = 3;
+                                    else if (preguntaCuotas == "2")
+                                        CuotasContadas = 6;
+                                    else if (preguntaCuotas == "3")
+                                        CuotasContadas = 12;
+                                }
+                                #endregion
                                 Paquetes PaqueteNac = new Paquetes(nombrePaquete, precio, impuestos, Cant_dias, Fecha_Viaje, vigencia, CuotasContadas);
+                                Console.WriteLine("------DATOS INGRESADOS------");
+                                PaqueteNac.MostrarPaquetesNac();
                                 PaqueteNac.Destinos();
                                 lPaquetesNac.Add(PaqueteNac);
                                 Console.WriteLine("------DATOS INGRESADOS------");
@@ -155,10 +195,44 @@ namespace TP_FINAL___Grupo_8___Neoris_x_UTN
 
                             case '2':
 
-                                Ingreso_data_paquetes();
+                                Console.WriteLine("Introduzca el nombre del Nuevo Paquete Internacional");
+                                nombrePaquete = Console.ReadLine();
+                                Console.WriteLine("Introducir el valor del paquete en Dolares $");
+                                Double.TryParse(Console.ReadLine(), out precio);
+                                Console.WriteLine("Agregar el impuesto fijo en dolares del paquete");
+                                Double.TryParse(Console.ReadLine(), out impuestos);
+
+                                Ingreso_data_restantes_de_paquetes();
+
+                                #region Cuotas InterNacionales
+                                Console.WriteLine("Ingresar Tipo de Pago Ofrecido");
+                                Console.WriteLine("[1] --> Contado efectivo");
+                                Console.WriteLine("[2] --> financiado en Cuotas");
+                                preguntaCuotas = Console.ReadLine().Trim();
+                                if (preguntaCuotas == "1")
+                                    CuotasContadas = 1;
+                                else if (preguntaCuotas == "2")
+                                {
+                                    Console.WriteLine("[1] --> financiado en 3 Cuotas");
+                                    Console.WriteLine("[2] --> financiado en 6 Cuotas");
+                                    preguntaCuotas = Console.ReadLine().Trim();
+                                    if (preguntaCuotas == "1")
+                                        CuotasContadas = 3;
+                                    else if (preguntaCuotas == "2")
+                                        CuotasContadas = 6;
+
+                                }
+                                #endregion
                                 #region Datos Paquetes Internacionales
                                 Console.WriteLine("¿Es necesario VISA?");
-                                visa = Convert.ToBoolean(Console.ReadLine());
+                                Console.WriteLine("[1] --> Si es necesario");
+                                Console.WriteLine("[2] --> No es necesario");
+                                string preguntaVisa = Console.ReadLine().Trim();//.Trim elimina los espacios en blanco antes o despues 
+                                if (preguntaVisa == "si")
+                                    visa = true;
+                                else if (preguntaVisa == "no")
+                                    visa = false;
+                                //visa = Convert.ToBoolean(Console.ReadLine());
                                 Console.WriteLine("Ingrese la Cotizacion del dolar");
                                 Cotizacion_Dolar = Convert.ToDouble(Console.ReadLine());
                                 #endregion
@@ -166,12 +240,12 @@ namespace TP_FINAL___Grupo_8___Neoris_x_UTN
                                 Paquetes PaqueteInterNac = new Paquetes(nombrePaquete, precio, impuestos, Cant_dias, Fecha_Viaje, vigencia, CuotasContadas, Cotizacion_Dolar, visa);
                                 lPaquetesNac.Add(PaqueteInterNac);
                                 Console.WriteLine("------DATOS INGRESADOS------");
-                                PaqueteInterNac.MostrarPaquetesNac();
+                                PaqueteInterNac.MostrarPaquetesInterNac();
                                 Console.WriteLine(" ");
                                 break;
                         }
 
-                        
+
                         break;
                     #endregion
 
@@ -186,6 +260,8 @@ namespace TP_FINAL___Grupo_8___Neoris_x_UTN
 
                     #region caso_Ajustes
                     case '4':
+
+
                         Console.WriteLine("*** ¿Que desea Modificar? ***");
                         Console.WriteLine("[1] --> Clientes");
                         Console.WriteLine("[2] --> Paquetes");
@@ -201,7 +277,8 @@ namespace TP_FINAL___Grupo_8___Neoris_x_UTN
                                 Console.WriteLine(" ");
                                 Console.WriteLine("Regresando al Menu... ");
                                 Console.WriteLine(" ");
-                                
+
+
                                 break;
 
                             case '1':
@@ -209,17 +286,22 @@ namespace TP_FINAL___Grupo_8___Neoris_x_UTN
                                 Console.WriteLine(" ");
                                 Console.WriteLine("[1] --> Cliente Consumidor Final");
                                 Console.WriteLine("[2] --> Cliente Corporativo");
+                                Console.WriteLine("[0] --> Regresar al Menu de Ajustes");
                                 do
                                 {
                                     opcion = Console.ReadKey(true);
                                 } while (opcion.KeyChar < '0' || opcion.KeyChar > '2');
-                                switch (opcion.KeyChar) 
+                                switch (opcion.KeyChar)
                                 {
-                                    case '1':
-                                        Console.WriteLine(" Ingrese el DNI de su Cliente ");
-                                        int.TryParse(Console.ReadLine(), out DNI);
-                                        c = lclientes_ConsFinal.Find(x => x.DNI == DNI);
+                                    case '0':
+                                        Console.WriteLine(" ");
+                                        Console.WriteLine("Regresando al Menu... ");
+                                        Console.WriteLine(" ");
+                                        break;
 
+                                    case '1':
+
+                                        Buscando_Clientes();
                                         if (c != null)
                                         {
                                             Console.WriteLine("EDITANDO CLIENTE: " + c.nombre + " " + c.apellido);
@@ -235,53 +317,63 @@ namespace TP_FINAL___Grupo_8___Neoris_x_UTN
                                             } while (opcion.KeyChar < '1' || opcion.KeyChar > '7');
 
                                             Ajustes_Edicion();
-                                            
+
                                             c.MostrarClientesConsFinal();
 
                                         }
                                         else { Console.WriteLine("el DNI que ingreso no pertenece a un Cliente de Consumidor Final existente :("); }
 
-                                            break;
+                                        break;
 
                                     case '2':
 
-                                        Console.WriteLine(" Ingrese el DNI de su Cliente ");
-                                        int.TryParse(Console.ReadLine(), out DNI);
-                                        c = lclientes_Corporativos.Find(x => x.DNI == DNI);
-
+                                        Buscando_Clientes();
                                         if (c != null)
                                         {
-                                            Console.WriteLine("EDITANDO CLIENTE: " + c.nombre + " " + c.apellido);
-                                            Console.WriteLine("*******************");
-                                            c.MostrarClientesConsFinal();
-                                            Console.WriteLine("*******************");
-                                            Console.WriteLine(" ");
+                                            while (loopBoolean == true)
+                                            {
+                                                Console.WriteLine("EDITANDO CLIENTE: " + c.nombre + " " + c.apellido);
+                                                Console.WriteLine("*******************");
+                                                c.MostrarClientesConsFinal();
+                                                Console.WriteLine("*******************");
+                                                Console.WriteLine(" ");
 
-                                            Ajustes_Seleccion();
-                                            #region Seleccion datos Corp
-                                            Console.WriteLine("[8] --> razon social: " + c.razon_social);
-                                            Console.WriteLine("[9] --> cuit: " + c.cuit);
-                                            #endregion
+                                                Ajustes_Seleccion();
+                                                #region Seleccion datos Corp
+                                                Console.WriteLine("[8] --> razon social: " + c.razon_social);
+                                                Console.WriteLine("[9] --> cuit: " + c.cuit);
+                                                #endregion
 
+                                                do
+                                                {
+                                                    opcion = Console.ReadKey(true);
+                                                } while (opcion.KeyChar < '1' || opcion.KeyChar > '9');
+
+                                                Ajustes_Edicion();
+
+                                                c.MostrarClientesCorp();
+                                            }
+                                            Console.WriteLine("¿Desea Contiunar Editando?");
+                                            Console.WriteLine("[1] --> SI");
+                                            Console.WriteLine("[2] --> NO");
                                             do
                                             {
                                                 opcion = Console.ReadKey(true);
-                                            } while (opcion.KeyChar < '1' || opcion.KeyChar > '9');
-
-                                            Ajustes_Edicion();
-
-                                            c.MostrarClientesCorp();
+                                            } while (opcion.KeyChar < '1' || opcion.KeyChar > '2');
+                                            if (opcion.KeyChar == '2')
+                                            {
+                                                loopBoolean = false;
+                                            }
+                                            else { loopBoolean = true; }
 
                                         }
-                                        else { Console.WriteLine("el DNI que ingreso no pertenece a un Cliente Corporativo existente :("); }
-
-
+                                        else { Console.WriteLine("el DNI que ingreso no pertenece o ya pertenece a un Cliente Corporativo existente :("); }
 
                                         break;
+
+
+
                                 }
-
-
-
 
                                 break;
 
@@ -291,10 +383,10 @@ namespace TP_FINAL___Grupo_8___Neoris_x_UTN
                         }
 
 
-
                         break;
-                    #endregion
+                        #endregion
 
+                
                     #region caso_Factura
                     case '5':
                         Console.WriteLine("*** ¡Ver Facturas de Clientes! ***");
@@ -312,7 +404,7 @@ namespace TP_FINAL___Grupo_8___Neoris_x_UTN
                 Console.WriteLine(" ");
                 Console.WriteLine("1 - Agregar Clientes");
                 Console.WriteLine("2 - Agregar Paquetes");
-                Console.WriteLine("3 - Asignar Paquetes a un Cliente");
+                Console.WriteLine("3 - Asignar/Quitar Paquetes a un Cliente");
                 Console.WriteLine("4 - Ajustes");
                 Console.WriteLine("5 - Ver Factura");
                 Console.WriteLine("ESC - Salir");
@@ -325,8 +417,12 @@ namespace TP_FINAL___Grupo_8___Neoris_x_UTN
                 nombreCliente = Console.ReadLine();
                 Console.WriteLine("Indique su Apellido ");
                 apellido = Console.ReadLine();
-                Console.WriteLine("Indique su DNI");
-                int.TryParse(Console.ReadLine(), out DNI);
+
+               Console.WriteLine(" Ingrese el DNI de su Cliente ");
+               int.TryParse(Console.ReadLine(), out DNI);
+               c = lclientes_ConsFinal.Find(x => x.DNI == DNI);
+                
+
                 Console.WriteLine("Indique su Telefono ");
                 telefono = Console.ReadLine();
                 Console.WriteLine("Indique su Nacionalidad");
@@ -337,23 +433,26 @@ namespace TP_FINAL___Grupo_8___Neoris_x_UTN
                 direccion = Console.ReadLine();
             }
 
-            void Ingreso_data_paquetes() 
+            void Ingreso_data_restantes_de_paquetes() 
             {
-                Console.WriteLine("Introduzca el nombre del nuevo paquete");
-                nombrePaquete = Console.ReadLine();
-                Console.WriteLine("Indique su valor en pesos $");
-                Double.TryParse(Console.ReadLine(), out precio);
-                //precio = Convert.ToDouble(Console.ReadLine());
-                Console.WriteLine("agregar impuesto a cobrar en %");
-                impuestos = Convert.ToDouble(Console.ReadLine());
-                Console.WriteLine("introduzca la cantidad de dias");
-                Cant_dias = Convert.ToInt32(Console.ReadLine());
+                //agregar un ID a los paquetes
+                Console.WriteLine("Ingrese la duracion del paquete en cantidad de dias");
+                Int32.TryParse(Console.ReadLine(), out Cant_dias);
+                //agregar un excepcion loop averiguar que no ponga fechas antes de hoy
                 Console.WriteLine("Indique la fecha del viaje");
-                Fecha_Viaje = Convert.ToDateTime(Console.ReadLine());
-                Console.WriteLine("Indique si se encuentra vigente el nombre");
-                vigencia = Convert.ToBoolean(Console.ReadLine());
-                Console.WriteLine("Indique la cantidad de cuotas contadas");
-                CuotasContadas = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("En formato DD/MM/AA");
+                DateTime.TryParse(Console.ReadLine(), out Fecha_Viaje);
+                Console.WriteLine("Indique la Vigencia de Paquete");
+                Console.WriteLine("[1] --> Paquete Vigente");
+                Console.WriteLine("[2] --> Paquete No Vigente");
+                string pregunta = Console.ReadLine().Trim();
+                if (pregunta == "1")
+                    vigencia = true;
+                if (pregunta == "2")
+                    vigencia = false;
+
+              
+
             }
 
             void Ajustes_Seleccion() 
@@ -418,6 +517,13 @@ namespace TP_FINAL___Grupo_8___Neoris_x_UTN
                         c.cuit = Console.ReadLine();
                         break;
                 }
+            }
+
+            void Buscando_Clientes() 
+            {
+                Console.WriteLine(" Ingrese el DNI de su Cliente ");
+                int.TryParse(Console.ReadLine(), out DNI);
+                c = lclientes_ConsFinal.Find(x => x.DNI == DNI);
             }
 
             
