@@ -76,7 +76,7 @@ namespace Clases_de_proyectos
             Destinos.Add("China");
             #endregion
 
-            while(loopBoolean = true) 
+            while(loopBoolean == true) 
             {
 
                 Console.WriteLine("Seleccione su Destino");
@@ -98,6 +98,7 @@ namespace Clases_de_proyectos
                 switch (opcion.KeyChar)
                 {
                     case '1':
+                        loopBoolean = false;
                         break;
 
                     case '2':
@@ -107,35 +108,56 @@ namespace Clases_de_proyectos
                         break;
                 }
 
-
-
             }
-            
 
         }
 
         public void MostrarPaquetesNac()
         {
             Console.WriteLine("********* PAQUETE ********* ");
-            Console.WriteLine("Fecha y hora: " + Fecha_Viaje);
-            Console.WriteLine("Precio: " + precio);
-            Console.WriteLine("impuestos: " + impuestos + "%");
-            Console.WriteLine("Cantidad de Dias: " + Cant_dias);
-            Console.WriteLine("Vigencia: " + Vigencia);
-            Console.WriteLine("Cantidad de cuotas: " + CuotasContadas);
+            Console.WriteLine("Nombre del Paquete: " + Nombre);
+            Console.WriteLine("Fecha y hora de inicio de viaje: " + Fecha_Viaje);
+            Console.WriteLine("Valor del Paquete : " + precio + "$");
+            Console.WriteLine("Impuesto Aplicado: " + impuestos + "%");
+            Console.WriteLine("Duracion del Paquete : " + Cant_dias + " dias");
+            if (Vigencia == true)
+                Console.WriteLine("El paquete se encuentra Vigente");
+            if (Vigencia == false)
+                Console.WriteLine("El paquete esta Vencido");
+            if (CuotasContadas == 1)
+                Console.WriteLine("El Paquete se paga al contado");
+            else if (CuotasContadas == 3)
+                Console.WriteLine("El Paquete se financia en 3 cuotas");
+            else if (CuotasContadas == 6)
+                Console.WriteLine("El Paquete se financia en 6 cuotas");
+            else if (CuotasContadas == 12)
+                Console.WriteLine("El Paquete se financia en 12 cuotas");
 
         }
         public void MostrarPaquetesInterNac()
         {
             Console.WriteLine("********* PAQUETE ********* ");
-            Console.WriteLine("Fecha y hora: " + Fecha_Viaje);
-            Console.WriteLine("Precio: " + precio);
-            Console.WriteLine("impuestos: " + impuestos + "%");
-            Console.WriteLine("Cantidad de Dias: " + Cant_dias);
-            Console.WriteLine("Vigencia: " + Vigencia);
-            Console.WriteLine("Cantidad de cuotas: " + CuotasContadas);
-            Console.WriteLine("Cotizacion del Dolar: " + Cotizacion_Dolar);
-            Console.WriteLine("Requiere visa: " + visa);
+            Console.WriteLine("Nombre del Paquete: " + Nombre);
+            Console.WriteLine("Fecha y hora de inicio de viaje: " + Fecha_Viaje);
+            Console.WriteLine("Valor del Paquete en dolares : " + precio + "USD");
+            Console.WriteLine("Cotizacion del Dolar al dia : " + Cotizacion_Dolar);
+            Console.WriteLine("Valor del Paquete en Pesos : " + precio*Cotizacion_Dolar + "$");
+            Console.WriteLine("Impuesto Fijo Aplicado: " + impuestos );
+            Console.WriteLine("Duracion del Paquete : " + Cant_dias + " dias");
+            if (Vigencia == true)
+                Console.WriteLine("El paquete se encuentra Vigente");
+            if (Vigencia == false)
+                Console.WriteLine("El paquete esta Vencido");
+            if (CuotasContadas == 1)
+                Console.WriteLine("El Paquete se paga al contado");
+            else if (CuotasContadas == 3)
+                Console.WriteLine("El Paquete se financia en 3 cuotas");
+            else if (CuotasContadas == 6)
+                Console.WriteLine("El Paquete se financia en 6 cuotas");
+            if (visa== true)
+                Console.WriteLine("Requiere visa: Si");
+            if (visa == false)
+                Console.WriteLine("Requiere visa: No");
         }
 
         
