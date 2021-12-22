@@ -13,6 +13,8 @@ namespace Clases_de_proyectos
 
         public int DNI;
 
+        public int nroCliente;
+
         public Clientes() //por defecto 
         {
             
@@ -20,8 +22,9 @@ namespace Clases_de_proyectos
 
 
         //clientes Consumidor Final
-        public Clientes(string nombre, string apellido, int DNI, string telefono, string nacionalidad, string provincia, string direccion) 
+        public Clientes(int nroCliente, string nombre, string apellido, int DNI, string telefono, string nacionalidad, string provincia, string direccion) 
         {
+            this.nroCliente = nroCliente;
             this.nombre = nombre;
             this.apellido = apellido;
             this.DNI  = DNI;
@@ -34,8 +37,9 @@ namespace Clases_de_proyectos
         }
 
         //clientes Corporativos
-        public Clientes(string nombre, string apellido, int DNI, string telefono, string nacionalidad, string provincia, string direccion, string razon_social, string cuit) 
+        public Clientes(int nroCliente, string nombre, string apellido, int DNI, string telefono, string nacionalidad, string provincia, string direccion, string razon_social, string cuit) 
         {
+            this.nroCliente = nroCliente;
             this.nombre = nombre;
             this.apellido = apellido;
             this.DNI = DNI;
@@ -53,6 +57,10 @@ namespace Clases_de_proyectos
 
         public void MostrarClientesConsFinal()
         {
+            Console.WriteLine("**********************************************");
+            Console.WriteLine("********** CLIENTE CONSUMIDOR FINAL **********");
+            Console.WriteLine("**********************************************");
+            Console.WriteLine("********** ID CLIENTE: " + nroCliente + " **********");
             Console.WriteLine("nombre: " + nombre);
             Console.WriteLine("apellido: " + apellido);
             Console.WriteLine("DNI: " + DNI);
@@ -60,11 +68,16 @@ namespace Clases_de_proyectos
             Console.WriteLine("nacionalidad: " + nacionalidad);
             Console.WriteLine("provincia: " + provincia);
             Console.WriteLine("direccion: " + direccion);
-            
+            Console.WriteLine("**********************************************");
+            Console.WriteLine(" ");
         }
 
         public void MostrarClientesCorp()
         {
+            Console.WriteLine("*****************************************");
+            Console.WriteLine("********** CLIENTE CORPORATIVO **********");
+            Console.WriteLine("*****************************************");
+            Console.WriteLine("********** ID CLIENTE: " + nroCliente + " **********");
             Console.WriteLine("nombre: " + nombre);
             Console.WriteLine("apellido: " + apellido);
             Console.WriteLine("DNI: " + DNI);
@@ -74,6 +87,8 @@ namespace Clases_de_proyectos
             Console.WriteLine("direccion: " + direccion);
             Console.WriteLine("razon social: " + razon_social);
             Console.WriteLine("cuit: " + cuit);
+            Console.WriteLine("**********************************************");
+            Console.WriteLine(" ");
 
         }
 
