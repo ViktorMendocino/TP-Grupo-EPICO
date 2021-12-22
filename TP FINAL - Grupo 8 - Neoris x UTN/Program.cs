@@ -296,8 +296,7 @@ class Program
                 //seleccion de paquetes internacionales
                 //algun valor para definir que tipos de clientes y paquetes tenemos en la factura
                 //quitar paquetes a un cliente
-                //IMPORTANTE: NO PERMITIR QUE UN CLIENTE SELECCIONE PAQUETES NO VIGENTES
-                
+
                 #region caso_Asignacion_de_Paquetes
                 case '3':
                     Console.WriteLine("*** ¡Asignasion Paquetes a Clientes! ***");
@@ -357,23 +356,39 @@ class Program
                                         {
                                             selecccion = orden - 1;
                                             p = lPaquetesNac[selecccion];
-
-                                            Console.WriteLine("[" + orden + "] --> " + p.Nombre);
+                                            if (p.Vigencia == true)
+                                            {
+                                                Console.WriteLine("[" + orden + "] --> " + p.Nombre );
+                                            }
+                                            else 
+                                            {
+                                                Console.WriteLine("[" + orden + "] --> " + p.Nombre + "  NO VIGENTE ");
+                                            }
+                                            
                                         }
                                         catch (Exception) { }
                                     }
+                                    
+                                                                         
+                                    
                                     Console.WriteLine("Seleccione un Paquete!");
                                     p = lPaquetesNac[ Convert.ToInt32(Console.ReadLine()) - 1];
-
-                                    nroFactura++;
-                                    Factura NewFactura = new Factura(nroFactura, c, p , DateTime.Now);
-                                    lFactura.Add(NewFactura);
-                                    Console.WriteLine("------DATOS INGRESADOS------");
-                                    NewFactura.mostrarDatos();
-                                    Console.WriteLine(" ");
-
+                                    if (p.Vigencia==true) {
+                                        nroFactura++;
+                                        Factura NewFactura = new Factura(nroFactura, c, p, DateTime.Now);
+                                        lFactura.Add(NewFactura);
+                                        Console.WriteLine("------DATOS INGRESADOS------");
+                                        NewFactura.mostrarDatos();
+                                        Console.WriteLine(" ");
+                                    }
+                                    else 
+                                    {
+                                        Console.WriteLine("Lo sentimos, el paquete no se encuentra vigente ");
+                                        Console.WriteLine("Si quiere que este paquete vuelva a encontrarse vigente dirigase a ajustes");
+                                    }
 
                                 }
+
                                 else
                                 {
                                     selecccion = 0;
