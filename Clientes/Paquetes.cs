@@ -21,15 +21,16 @@ namespace Clases_de_proyectos
         public int CuotasContadas;
         public double Cotizacion_Dolar;
         public bool visa;
-        public int IDpaquetes;
+        public int nroPaquete;
         public string Lugares;
 
         
 
 
         //Paquetes Nacionales
-        public Paquetes(string Nombre, double precio, double impuestos, int Cant_dias, DateTime Fecha_Viaje, bool Vigencia, int CuotasContadas)
+        public Paquetes(int nroPaquete,string Nombre, double precio, double impuestos, int Cant_dias, DateTime Fecha_Viaje, bool Vigencia, int CuotasContadas, string Lugares)
         {
+            this.nroPaquete = nroPaquete;
             this.Nombre = Nombre;
             this.precio = precio;
             this.impuestos = impuestos;
@@ -37,12 +38,14 @@ namespace Clases_de_proyectos
             this.Fecha_Viaje = Fecha_Viaje;
             this.Vigencia = Vigencia;
             this.CuotasContadas = CuotasContadas;
-            IDpaquetes++;
+            this.Lugares = Lugares;
+            
         }
 
         //Paquete Internacionales   cot dolar y visa
-        public Paquetes(string Nombre, double precio, double impuestos, int Cant_dias, DateTime Fecha_Viaje, bool Vigencia, int CuotasContadas, double Cotizacion_Dolar, bool visa)
+        public Paquetes(int nroPaquete, string Nombre, double precio, double impuestos, int Cant_dias, DateTime Fecha_Viaje, bool Vigencia, int CuotasContadas, double Cotizacion_Dolar, bool visa, string Lugares)
         {
+            this.nroPaquete = nroPaquete;
             this.Nombre = Nombre;
             this.precio = precio;
             this.impuestos = impuestos;
@@ -52,7 +55,8 @@ namespace Clases_de_proyectos
             this.CuotasContadas = CuotasContadas;
             this.Cotizacion_Dolar = Cotizacion_Dolar;
             this.visa = visa;
-            IDpaquetes++;
+            this.Lugares = Lugares;
+            
         }
         public void Destinos()
         {
@@ -111,15 +115,18 @@ namespace Clases_de_proyectos
             }
 
         }
-
         public void MostrarPaquetesNac()
         {
-            Console.WriteLine("********* PAQUETE ********* ");
+            Console.WriteLine("**************************************");
+            Console.WriteLine("********** PAQUETE NACIONAL **********");
+            Console.WriteLine("**************************************");
+            Console.WriteLine("********** PAQUETE NRO: " + nroPaquete + " **********");
             Console.WriteLine("Nombre del Paquete: " + Nombre);
             Console.WriteLine("Fecha y hora de inicio de viaje: " + Fecha_Viaje);
             Console.WriteLine("Valor del Paquete : " + precio + "$");
             Console.WriteLine("Impuesto Aplicado: " + impuestos + "%");
             Console.WriteLine("Duracion del Paquete : " + Cant_dias + " dias");
+            Console.WriteLine("DESTINO : " + Lugares);
             if (Vigencia == true)
                 Console.WriteLine("El paquete se encuentra Vigente");
             if (Vigencia == false)
@@ -132,11 +139,16 @@ namespace Clases_de_proyectos
                 Console.WriteLine("El Paquete se financia en 6 cuotas");
             else if (CuotasContadas == 12)
                 Console.WriteLine("El Paquete se financia en 12 cuotas");
+            Console.WriteLine("**********************************************");
+            Console.WriteLine(" ");
 
         }
         public void MostrarPaquetesInterNac()
         {
-            Console.WriteLine("********* PAQUETE ********* ");
+            Console.WriteLine("*******************************************");
+            Console.WriteLine("********** PAQUETE INTERNACIONAL **********");
+            Console.WriteLine("*******************************************");
+            Console.WriteLine("********** PAQUETE NRO: " + nroPaquete + " **********");
             Console.WriteLine("Nombre del Paquete: " + Nombre);
             Console.WriteLine("Fecha y hora de inicio de viaje: " + Fecha_Viaje);
             Console.WriteLine("Valor del Paquete en dolares : " + precio + "USD");
@@ -144,6 +156,7 @@ namespace Clases_de_proyectos
             Console.WriteLine("Valor del Paquete en Pesos : " + precio*Cotizacion_Dolar + "$");
             Console.WriteLine("Impuesto Fijo Aplicado: " + impuestos );
             Console.WriteLine("Duracion del Paquete : " + Cant_dias + " dias");
+            Console.WriteLine("DESTINO : " + Lugares);
             if (Vigencia == true)
                 Console.WriteLine("El paquete se encuentra Vigente");
             if (Vigencia == false)
@@ -155,9 +168,15 @@ namespace Clases_de_proyectos
             else if (CuotasContadas == 6)
                 Console.WriteLine("El Paquete se financia en 6 cuotas");
             if (visa== true)
+            {
                 Console.WriteLine("Requiere visa: Si");
-            if (visa == false)
+            }
+            else 
+            {
                 Console.WriteLine("Requiere visa: No");
+            }
+            Console.WriteLine("**********************************************");
+            Console.WriteLine(" ");
         }
 
         
