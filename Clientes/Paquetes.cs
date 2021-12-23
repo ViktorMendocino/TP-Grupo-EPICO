@@ -122,7 +122,7 @@ namespace Clases_de_proyectos
             Console.WriteLine("**************************************");
             Console.WriteLine("********** PAQUETE NRO: " + nroPaquete + " **********");
             Console.WriteLine("Nombre del Paquete: " + Nombre);
-            Console.WriteLine("Fecha y hora de inicio de viaje: " + Fecha_Viaje);
+            Console.WriteLine("Fecha y hora de inicio de viaje: " + Fecha_Viaje.ToString("dd/MM/yyyy"));
             Console.WriteLine("Valor del Paquete : " + precio + "$");
             Console.WriteLine("Impuesto Aplicado: " + impuestos + "%");
             Console.WriteLine("Duracion del Paquete : " + Cant_dias + " dias");
@@ -150,7 +150,7 @@ namespace Clases_de_proyectos
             Console.WriteLine("*******************************************");
             Console.WriteLine("********** PAQUETE NRO: " + nroPaquete + " **********");
             Console.WriteLine("Nombre del Paquete: " + Nombre);
-            Console.WriteLine("Fecha y hora de inicio de viaje: " + Fecha_Viaje);
+            Console.WriteLine("Fecha y hora de inicio de viaje: " + Fecha_Viaje.ToString("dd/MM/yyyy"));
             Console.WriteLine("Valor del Paquete en dolares : " + precio + "USD");
             Console.WriteLine("Cotizacion del Dolar al dia : " + Cotizacion_Dolar);
             Console.WriteLine("Valor del Paquete en Pesos : " + precio*Cotizacion_Dolar + "$");

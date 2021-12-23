@@ -746,21 +746,33 @@ class Program
 
             Console.WriteLine("Ingrese la duracion del paquete en cantidad de dias");
             Int32.TryParse(Console.ReadLine(), out Cant_dias);
-            //agregar un excepcion loop averiguar que no ponga fechas antes de hoy
+            //agregar un excepcion loop averiguar que no ponga fechas antes de hoy-solucionado
             Console.WriteLine("Indique la fecha del viaje");
             Console.WriteLine("En formato DD/MM/AA");
             DateTime.TryParse(Console.ReadLine(), out Fecha_Viaje);
+            if (Fecha_Viaje < DateTime.Now)
+            {
+                do
+                {
+                    Console.WriteLine("Usted ha ingresado una fecha erronea");
+                    Console.WriteLine("Por favor ingresela nuevamente");
+                    DateTime.TryParse(Console.ReadLine(), out Fecha_Viaje);
+
+                } while (Fecha_Viaje < DateTime.Now);
+            }
+            Console.WriteLine("Usted ha ingresado la siguiente fecha de viaje {0}", Fecha_Viaje.ToString("dd/MM/yyyy"));
             Console.WriteLine("Indique la Vigencia de Paquete");
             Console.WriteLine("[1] --> Paquete Vigente");
             Console.WriteLine("[2] --> Paquete No Vigente");
-            string pregunta = Console.ReadLine().Trim();
-            if (pregunta == "1")
+            do
+            {
+                opcion = Console.ReadKey(true);
+            } while (opcion.KeyChar < '1' || opcion.KeyChar > '2');
+            if (opcion.KeyChar == '1')
+            {
                 vigencia = true;
-            if (pregunta == "2")
-                vigencia = false;
-
-
-
+            }
+            else { vigencia = false; }
         }
 
         void Ajustes_Seleccion_Clientes()
@@ -878,7 +890,17 @@ class Program
                 case '5':
                     Console.WriteLine("Indique la fecha del viaje");
                     Console.WriteLine("En formato DD/MM/AA");
-                    DateTime.TryParse(Console.ReadLine(), out p.Fecha_Viaje);
+                    if (Fecha_Viaje < DateTime.Now)
+                    {
+                        do
+                        {
+                            Console.WriteLine("Usted ha ingresado una fecha erronea");
+                            Console.WriteLine("Por favor ingresela nuevamente");
+                            DateTime.TryParse(Console.ReadLine(), out p.Fecha_Viaje);
+
+                        } while (Fecha_Viaje < DateTime.Now);
+                    }
+                    Console.WriteLine("Usted ha ingresado la siguiente fecha de viaje {0}", p.Fecha_Viaje.ToString("dd/MM/yyyy"));
                     break;
 
                 case '6':
@@ -939,11 +961,15 @@ class Program
                     Console.WriteLine("Indique la Vigencia de Paquete");
                     Console.WriteLine("[1] --> Paquete Vigente");
                     Console.WriteLine("[2] --> Paquete No Vigente");
-                    string pregunta = Console.ReadLine().Trim();
-                    if (pregunta == "1")
-                        vigencia = true;
-                    if (pregunta == "2")
-                        vigencia = false;
+                    do
+                    {
+                        opcion = Console.ReadKey(true);
+                    } while (opcion.KeyChar < '1' || opcion.KeyChar > '2');
+                    if (opcion.KeyChar == '1')
+                    {
+                        p.Vigencia = true;
+                    }
+                    else { p.Vigencia = false; }
                     break;
 
                 case '9':
